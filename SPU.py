@@ -749,25 +749,6 @@ def download_page():
 
 
     # 添加数据部分
-    with st.container():
-        expander = st.expander("Add Data", expanded=True)
-        with expander:
-            st.title('Add Data to Database')
-            data = []
-            columns = [
-                "polyol", "Diisocyanate", "extender1", "extender2",
-                "extender1append", "extender2append", "polyol_MW", "dimw", "piece_mw", "pre_mw",
-                "ex1_mw", "ex2_mw", "polyol_ratio", "Diisocyanate_ratio", "extender1_ratio",
-                "extender2_ratio", "Hs_wt", "R", "mac_rate", "Ym", "Ts", "Eb", "Th", "break_ratio",
-                "self_tem", "self_time", "E1", "E2"
-            ]
-
-            # Create 3 rows, each with 10 input boxes
-            for i in range(0, len(columns), 5):
-                row = st.columns(5)
-                for j, col in enumerate(columns[i:i + 5]):
-                    input_value = row[j].text_input(f'{col}')
-                    data.append(input_value)
 
            
 
