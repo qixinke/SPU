@@ -706,11 +706,7 @@ def download_page():
     df = get_data()
 
     # 定义一个状态标志，用于跟踪程序是否已经运行过
-    '''run_once = st.session_state.get("run_once", False)
-    if not run_once:
-        with st.spinner('Connecting to MySQL...'):
-            time.sleep(3)
-        st.session_state.run_once = True'''
+
 
     # 设置每页显示的行数
     rows_per_page = 10
