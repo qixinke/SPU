@@ -57,12 +57,18 @@ def search_page():
         
         file='data.csv'
         df = pd.read_csv (file)
-        mask = df.astype(str).str.contains(
-            search_value, 
-            case=False,  # 不区分大小写
-            na=False,    # 处理 NaN 值
-            regex=False  # 不使用正则表达式，纯文本匹配
+        row_text = df.astype(str).apply(
+            lambda row: ' | '.join(row.values), 
+            axis=1
         )
+        
+        mask = row_text.str.contains(
+            search_value, 
+            case=False,
+            na=False,
+            regex=False
+        )
+        
         df = df[mask]
         #db.close()
         if df.empty:
