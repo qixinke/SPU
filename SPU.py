@@ -49,14 +49,13 @@ def search_page():
     from streamlit_ketcher import st_ketcher
     search_value = st.text_input("Molecule", "")
     search_value = st_ketcher(search_value)
-    st.markdown(f"Smile code: ``{smile_code}``")
-    search_value = st.text_input(smile_code)
+    #s#t.markdown(f"Smile code: ``{smile_code}``")
+    #search_value = st.text_input(smile_code)
     #db_config = st.secrets["database"]
 
     if search_value:
         
         file='data.csv'
-        
         df = pd.read_csv (file)
         
         #db.close()
