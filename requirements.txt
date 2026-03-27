@@ -6,3 +6,4 @@ rdkit==2023.9.2
 matplotlib
 rdkit-pypi
 streamlit_ketcher
+sklearn
