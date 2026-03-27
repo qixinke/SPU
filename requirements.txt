@@ -4,5 +4,5 @@ numpy==1.24.3
 joblib==1.4.0
 rdkit==2023.9.2
 matplotlib
-
+rdkit-pypi
 
