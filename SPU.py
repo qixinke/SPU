@@ -691,8 +691,7 @@ def predict_page():
         a
 def download_page():
     def get_data():
-        '''db = pymysql.connect(host='127.0.0.1', user='root', passwd='123456', port=3306, db='pu')
-        sql = 'SELECT * FROM data;'''''
+       
         file = 'data.csv'
 
         df = pd.read_csv(file)
