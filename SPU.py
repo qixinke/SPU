@@ -51,7 +51,7 @@ def search_page():
     search_value = st_ketcher(search_value)
     # st.markdown(f"Smile code: ``{smile_code}``")
     # search_value = st.text_input(smile_code)
-    db_config = st.secrets["database"]
+    #db_config = st.secrets["database"]
 
     if search_value:
         # 连接到数据库
