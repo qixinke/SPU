@@ -54,26 +54,11 @@ def search_page():
     #db_config = st.secrets["database"]
 
     if search_value:
-        # 连接到数据库
-        # conn = sqlite3.connect('your_database.db')
-        #db = st.connection("my_mysql_connection", host='127.0.0.1', user='root', password='123456', port=3306, database='pu')
+        
         file='data.csv'
-        # 创建数据库连接
-        '''db = st.connection(
-            "my_mysql_connection",
-            host=db_config["host"],
-            user=db_config["user"],
-            password=db_config["password"],
-            port=db_config["port"],
-            database=db_config["database"]
-        )
-        # 根据用户输入的字段值执行查询
-        # 假设我们要查找的字段是'column_name'，表是'your_table'
-        query = f"SELECT * FROM data WHERE Diisocyanate LIKE '{search_value}'"'''
+        
         df = pd.read_csv (file)
-        # df = pd.read_sql_query(query, db, params=(search_value))
-
-        # 关闭数据库连接
+        
         #db.close()
         if df.empty:
             st.subheader("NO FOUND")
