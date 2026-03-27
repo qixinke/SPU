@@ -57,7 +57,13 @@ def search_page():
         
         file='data.csv'
         df = pd.read_csv (file)
-        
+        mask = df.astype(str).str.contains(
+            search_value, 
+            case=False,  # 不区分大小写
+            na=False,    # 处理 NaN 值
+            regex=False  # 不使用正则表达式，纯文本匹配
+        )
+        df = df[mask]
         #db.close()
         if df.empty:
             st.subheader("NO FOUND")
@@ -734,13 +740,7 @@ def download_page():
             new_page = current_page + 1
             st.session_state.current_page = new_page
 
-    # 提供CSV下载
-   # csv = df.to_csv(index=False)
-    #st.download_button(
-        #label="Download Data",
-        #data=csv,
-        #file_name='data.csv',
-        #mime='text/csv')
+
 
     # 添加数据部分
     with st.container():
@@ -763,48 +763,7 @@ def download_page():
                     input_value = row[j].text_input(f'{col}')
                     data.append(input_value)
 
-            # When the user clicks the button
-            '''if st.button('Add Data'):
-                try:
-                    # Connect to the database
-                    db = pymysql.connect(host='127.0.0.1', user='root', passwd='123456', port=3306, db='pu')
-                    cursor = db.cursor()
-
-                    # Construct the SQL INSERT statement
-                    sql = f"""
-                        INSERT INTO data (
-                            polyol, Diisocyanate, extender1, extender2, 
-                            extender1append, extender2append, polyol_MW, dimw, piece_mw, pre_mw,
-                            ex1_mw, ex2_mw, polyol_ratio, Diisocyanate_ratio, extender1_ratio,
-                            extender2_ratio, Hs_wt, R, mac_rate, Ym, Ts, Eb, Th, break_ratio,
-                            self_tem, self_time, E1, E2
-                        ) VALUES (
-                            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-                            %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-                            %s, %s  , %s
-                        )
-                    """
-
-                    # Execute the SQL query with the data as parameters
-                    cursor.execute(sql, (data[0], data[1], data[2], data[3], data[4], data[5],
-                                         float(data[6]), float(data[7]), float(data[8]), float(data[9]),
-                                         float(data[10]), float(data[11]), float(data[12]), float(data[13]),
-                                         float(data[14]), float(data[15]), float(data[16]), float(data[17]),
-                                         float(data[18]), float(data[19]), float(data[20]), float(data[21]),
-                                         float(data[22]), float(data[23]), float(data[24]), float(data[25]),
-                                         float(data[26]), float(data[27])))
-
-                    # Commit the changes to the database
-                    db.commit()
-
-                    # Close the database connection
-                    db.close()
-
-                    # Show success message
-                    st.success('Data added successfully!')
-                except Exception as e:
-                    # If there's an error, show an error message
-                    st.error(f'Error occurred: {e}')'''
+           
 
 
 def contact_page():
